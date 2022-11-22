@@ -20,8 +20,24 @@ A colliction of scripts that automate the process of setting up, training, and i
 - infrence.sh => generate the output video from FACIAL.
 - clean.sh => delete all the generated files during preprocessing, training, and infrence.
 
-## NOTE
+## prerequisite
+- ffmpeg
+- anaconda
+- docker
+
+## if openface fails during preprocess
+comment out from line 11 to line 37 inside preprocess.sh, then download openface in [windows](https://github.com/TadasBaltrusaitis/OpenFace/wiki/Windows-Installation) and follow these steps:
+- open "cmd" from the search bar.
+- navigate to "OpenFace_2.2.0_win_x64" by writing
+"cd Desktop/OpenFace_2.2.0_win_x64" in the cmd terminal.
+- write "FeatureExtraction.exe -fdir <path_to_image_folders>"
+- after the program is finished open the "OpenFace_2.2.0_win_x64" in 
+window explorer and go to "processed" folder.
+- inside "processed" folder you will find a csv file with the same name
+as the image folders.
+### **NOTE: before placing the .csv file in train1_openface rename it into "train1_512_audio.csv"**
+
+## NOTES
 - Please ensure that the video file is named (train1.mp4) & audio file is (test1.wav) and place them inside FACIAL/video_preprocess.
-- Please ensure that the csv file is neamed (train1_512_audio.csv) and put it in FACIAL/video_preprocess/train1_openface.
-- unfortunately I couldn't add the [openface](https://github.com/TadasBaltrusaitis/OpenFace) in the preprocess pipeline. This will be added in the future if I have enough time. (For now try to run it in windows, its much smoother and easier to install).
+- ~~unfortunately I couldn't add the [openface](https://github.com/TadasBaltrusaitis/OpenFace) in the preprocess pipeline.~~ openface is added in the preprocess step through [docker](https://hub.docker.com/r/algebr/openface)
 - This script and conda env are tested on ubuntu 20.04LTS.
