@@ -1,11 +1,5 @@
 #!/bin/bash
-echo "Are you sure you want to delete all the content of these folders?
--video_preprocess
--datasets
--checkpoints
--test_image
--rendering
--results"
+echo "Are you sure you want to clean the whole project? it will be like starting a new one (Back up your video and audio files)?"
 
 select yn in "Yes" "No"; do
     case $yn in

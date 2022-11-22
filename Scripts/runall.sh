@@ -5,7 +5,7 @@ echo 'Training video or Test audio are not found'
 exit
 fi
 
-echo
+sudo echo
 
 bash -i preprocess.sh
 if [ "$?" -eq 1 ]
@@ -15,4 +15,15 @@ exit
 fi
 
 bash -i training.sh
+if [ "$?" -eq 1 ]
+then
+echo "An error occured in training"
+exit
+fi
+
 bash -i infrence.sh
+if [ "$?" -eq 1 ]
+then
+echo "An error occured in infrence"
+exit
+fi
