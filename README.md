@@ -19,6 +19,7 @@ A colliction of scripts that automate the process of setting up, training, and i
 - training.sh => train the FACIAL model & audio feature extracter & prepare 3d renders.
 - infrence.sh => generate the output video from FACIAL.
 - clean.sh => delete all the generated files during preprocessing, training, and infrence.
+### **NOTE: Run the scripts with "bash -i <script name>"**
 
 ## prerequisite
 - download the [models](https://drive.google.com/drive/folders/1-ln5VrxMqeKW8jttkqqKhzoF37aCYq4g?usp=share_link) and place them inside ./FACIAL_Automated-FAT/models.
