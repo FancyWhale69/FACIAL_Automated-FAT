@@ -15,7 +15,7 @@ A colliction of scripts that automate the process of setting up, training, and i
 ## Scripts
 - install.sh => install conda environments & setup file structure. (installing the environments can be skipped).
 - runall.sh => runs the following scripts: preprocess.sh, training.sh, infrence.sh.
-- preprocess.sh => prepare the data for FACIAL training. (The openface step is not implemented yet).
+- preprocess.sh => prepare the data for FACIAL training. ~~(The openface step is not implemented yet).~~
 - training.sh => train the FACIAL model & audio feature extracter & prepare 3d renders.
 - infrence.sh => generate the output video from FACIAL.
 - clean.sh => delete all the generated files during preprocessing, training, and infrence.
