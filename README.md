@@ -21,7 +21,7 @@ A colliction of scripts that automate the process of setting up, training, and i
 - clean.sh => delete all the generated files during preprocessing, training, and infrence.
 
 ## prerequisite
-- download [models folder](https://drive.google.com/drive/folders/1-ln5VrxMqeKW8jttkqqKhzoF37aCYq4g?usp=share_link) and place it inside ./ FACIAL_Automated-FAT
+- download the [models](https://drive.google.com/drive/folders/1-ln5VrxMqeKW8jttkqqKhzoF37aCYq4g?usp=share_link) and place them inside ./FACIAL_Automated-FAT/models.
 - ffmpeg
 - anaconda
 - docker
