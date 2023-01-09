@@ -31,19 +31,11 @@ cp -r ./video_preprocess/"$def.wav" ./examples/audio/"$def.wav"
 cd audio2face  
 
 #if audio is already processed, skip this step
-if ! test -f ../FACIAL/examples/test-result/"$def.npz"
-then
 python audio_preprocessing.py  
 python test.py --audiopath ../examples/audio_preprocessed/"$def.pkl" --checkpath ./checkpoint/train1/Gen-10.mdl  
-fi
+
 
 cd ../face_render  
-
-#delete old renders
-if [ -d "../examples/rendering/$def" ]
-then
-rm -r "../examples/rendering/$def"
-fi
 
 python rendering_gaosi.py --train_params_path ../video_preprocess/train1_posenew.npz --net_params_path ../examples/test-result/"$def.npz" --outpath '../examples/rendering/'  
 
