@@ -9,14 +9,15 @@ A colliction of scripts that automate the process of setting up, training, and i
 4. [How to use it](#steps)
     - [training only](#training-only)
     - [infrence only](#infrence-only)
-5. [if openface fails during preprocess](#if-openface-fails-during-preprocess)
-6. [Notes](#notes)
+5. [openface using windows](#openface-using-windows)  
+6. [openface using docker](#openface-using-docker)
+7. [Notes](#notes)
 
 ## Features
 - installation and setup of all necessary environments and dependencies, like: [deep3Dface](https://github.com/sicxu/Deep3DFaceRecon_pytorch).
 - one script to rule them all, just run the runall.sh file to preprocess, train, and infer.
 - automatically chooses the least utilized GPU if the user is not present.
-- multiable safe guards to ensure everything runs smoothly.
+- ~~multiable safe guards to ensure everything runs smoothly.~~ Removed, causes some issues.
 - made FACIAL compatable with the output of Deep3DFaceRecon_pytorch.
 - changed some deprecated functions in FACIAL.
 - provided a python script to extract the 5-points landmarks needed by Deep3DFaceRecon_pytorch. `lands.py`.
@@ -63,8 +64,8 @@ A colliction of scripts that automate the process of setting up, training, and i
 2. enter which epoch to use, or default epoch `20` will be selected after 30s.
 3. ourput video will be saved in `./FACIAL_Automated-FAT/FACIAL/Results/<audio_file_name>_epoch_<epoch_number>_results.mp4`
 
-## if openface fails during preprocess
-comment out from line 11 to line 37 inside preprocess.sh, then download openface in [windows](https://github.com/TadasBaltrusaitis/OpenFace/wiki/Windows-Installation) and follow these steps:
+## openface using windows
+download openface in [windows](https://github.com/TadasBaltrusaitis/OpenFace/wiki/Windows-Installation) and follow these steps:
 - open "cmd" from the search bar.
 - navigate to `OpenFace_2.2.0_win_x64` by writing
 `cd Desktop/OpenFace_2.2.0_win_x64` in the cmd terminal.
@@ -74,6 +75,14 @@ window explorer and go to `processed` folder.
 - inside `processed` folder you will find a csv file with the same name
 as the image folders.
 ### **NOTE: before placing the .csv file in train1_openface rename it into `train1_512_audio.csv`**
+
+## openface using docker
+download openface [docker](https://hub.docker.com/r/algebr/openface/) and follow these steps:  
+- to start container run `sudo docker run -itt  -v "path":/home/openface-build/train1_512_audio --rm algebr/openface:latest`, where `path` is the location of the images folder.
+- run `export OMP_NUM_THREADS=1 && export VECLIB_MAXIMUM_THREADS=1` to avoid some issues with openBLAS, as [mentioned](https://github.com/TadasBaltrusaitis/OpenFace/wiki/Unix-Installation#OpenBLAS).  
+- run `./build/bin/FeatureExtraction -fdir ./train1_512_audio && cp processed/train1_512_audio.csv train1_512_audio` to copy the csv file to the shared folder.  
+- run `exit` to exit the container.  
+- csv file will be located inside the folder specified in `path`
 
 ## Notes
 - Please ensure that the video file is named (train1.mp4) & audio file is (test1.wav) and place them inside `FACIAL/video_preprocess`.
